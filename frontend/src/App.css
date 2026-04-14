@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f8fafc, #dbeafe);
+}
+
+/* Main Layout */
+.container {
+  display: grid;
+  grid-template-areas:
+    "sidebar editor"
+    "sidebar preview";
+  grid-template-columns: 280px 1fr;
+  grid-template-rows: 1fr 280px;
+  gap: 18px;
+  min-height: 100vh;
+  padding: 18px;
+}
+
+/* Cards */
+.sidebar,
+.editor,
+.preview {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Sidebar fixed rail */
+.sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Editor large area */
+.editor {
+  grid-area: editor;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bottom preview panel */
+.preview {
+  grid-area: preview;
+  overflow-y: auto;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sidebar h2 {
+  font-size: 26px;
+  color: #1e293b;
+}
+
+/* Buttons */
+button {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.sidebar button {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+.editor button {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+/* Note cards */
+.note-item {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: 0.3s ease;
+}
+
+.note-item:hover {
+  transform: scale(1.02);
+}
+
+.note-item h4 {
+  font-size: 17px;
+  color: #1e293b;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.note-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.note-actions button {
+  flex: 1;
+  font-size: 13px;
+  padding: 10px;
+}
+
+/* Editor */
+.editor h2,
+.preview h2 {
+  margin-bottom: 18px;
+  font-size: 28px;
+  color: #1e293b;
+}
+
+.editor input,
+.editor textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+}
+
+.editor textarea {
+  flex: 1;
+  resize: none;
+}
+
+/* Preview */
+.preview {
+  line-height: 1.8;
+}
+
+.preview p,
+.preview li,
+.preview h1,
+.preview h2,
+.preview h3 {
+  color: #334155;
+}
+
+/* Dark mode */
+.dark {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+.dark .sidebar,
+.dark .editor,
+.dark .preview {
+  background: rgba(30, 41, 59, 0.75);
+  color: white;
+}
+
+.dark .note-item {
+  background: rgba(51, 65, 85, 0.8);
+}
+
+.dark .sidebar h2,
+.dark .editor h2,
+.dark .preview h2,
+.dark .note-item h4 {
+  color: white;
+}
+
+.dark .editor input,
+.dark .editor textarea {
+  background: rgba(51, 65, 85, 0.9);
+  color: white;
+}
+
+.dark .preview p,
+.dark .preview li,
+.dark .preview h1,
+.dark .preview h2,
+.dark .preview h3 {
+  color: #e2e8f0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-areas:
+      "sidebar"
+      "editor"
+      "preview";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .preview {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar,
+  .editor,
+  .preview {
+    padding: 16px;
+  }
+
+  .note-actions {
+    flex-direction: column;
+  }
+
+  .editor textarea {
+    min-height: 220px;
+  }
+}
