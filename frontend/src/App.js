@@ -10,7 +10,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const API = "http://localhost:5000/notes";
+  const API = "https://notes-application-6wfs.onrender.com/notes";
 
   const fetchNotes = async () => {
     try {
